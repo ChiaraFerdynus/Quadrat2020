@@ -4,11 +4,13 @@ import numpy as np
 from openpyxl import load_workbook
 import xlsxwriter
 
+'''This script was used for exploratory purposes, not using the full data set'''
+
 df = pd.read_excel("NewData.xlsx")
 
 columns = df.columns[1:]  # drop first one (bc it is the Year)
 
-
+'''calculate the percentage of missing values'''
 def missing_values(snip, window, threshold):
     missing = snip.isnull().sum()
     percent = (missing/window)*100
@@ -66,7 +68,12 @@ def mk_column(Data, YearCol, LocCol, windows, datalist, threshold, alpha = 0.1):
 
     ''' need to find way to store it in Excel '''
 
-
+''' 
+Data = dataframe, loaded from excel
+YearCol = string(inlcude '') of year value (called 'NAME', please see for use below)
+LocCol = string(inlcude '')
+'''
+# function to create dataframe for parameter Q
 def mk_col_slope(Data, YearCol, LocCol, window, TH, alpha=0.1):
     length = Data[LocCol].shape[0]
     start_index = Data[YearCol].values[window - 1]
@@ -94,7 +101,7 @@ def mk_col_slope(Data, YearCol, LocCol, window, TH, alpha=0.1):
     return stats_list2
     #datalist = pd.merge(datalist, stats_list2, on='Year', how='outer')
 
-
+# function to create data frame containing values for trend (only for one location!!)
 def mk_col_trend(Data, YearCol, LocCol, window, TH, alpha=0.1):
     length = Data[LocCol].shape[0]
     start_index = Data[YearCol].values[window - 1]
@@ -157,7 +164,7 @@ merged_list_w50_md20 = merge_frame(df, 50, 20)
 
 
 '''
-for parameter sen's slope
+for parameter sen's slope (Q)
 merged_list_w30_md10 = merge_frame(df, 30, 10)
 merged_list_w50_md10 = merge_frame(df, 50, 10)
 merged_list_w30_md20 = merge_frame(df, 30, 20)
