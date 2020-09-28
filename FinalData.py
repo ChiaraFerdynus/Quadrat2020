@@ -4,6 +4,10 @@ import numpy as np
 from openpyxl import load_workbook
 import xlsxwriter
 
+'''
+This script creates data sets of Q, Trend and Z value of BU, FU and OW
+'''
+
 FU = pd.read_excel("NewFormat_Freezeup.xlsx")
 BU = pd.read_excel("NewFormat_Breakup.xlsx")
 OW = pd.read_excel("NewFormat_OW.xlsx")
