@@ -4,6 +4,10 @@ import numpy as np
 from openpyxl import load_workbook
 import xlsxwriter
 
+'''
+This code creates the new format spreadheets for BU, FU and OW, sorted by the lake codes
+'''
+
 pd.set_option('display.max_columns', 7)
 
 df = pd.read_excel("merged_v3_final_BU_FU_outputs_edit.xlsx")
