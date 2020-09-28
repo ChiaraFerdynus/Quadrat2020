@@ -3,6 +3,10 @@ import numpy as np
 from openpyxl import load_workbook
 import xlsxwriter
 
+'''
+This script only organizes additional info according to lake codes
+'''
+
 dfOld = pd.read_excel("merged_v3_final_BU_FU_outputs_edit.xlsx")
 
 code_group = dfOld.groupby('lakecode').groups
