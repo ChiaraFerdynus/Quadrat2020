@@ -7,6 +7,7 @@ import xlsxwriter
 
 '''
 This script only holds the function to plot the bar chart of trends, it is called in "SortCountry.py"
+Currently modified for OW & BU (negative trend signifies cooling trend), would have to manually change line 56 onwards to fit FU)
 '''
 
 def bar_plot(dftrial, region, xl_name):
