@@ -10,9 +10,9 @@ This script only holds the function to plot the bar chart of trends, it is calle
 '''
 
 def bar_plot(dftrial, region, xl_name):
-    dftrial = pd.read_excel(xl_name+'.xlsx')
-    dftrial = dftrial.replace(to_replace='Not enough data', value=np.nan, regex=True)
-    # cosl = names of columns
+    # dftrial = pd.read_excel(xl_name+'.xlsx') # (commented out, since the dataframe is already existend when called later)
+    dftrial = dftrial.replace(to_replace='Not enough data', value=np.nan, regex=True)      
+    # cols => list of names of columns
     cols = dftrial.columns
     # standard = dftrial[cols[1:]].describe()
 
@@ -26,7 +26,8 @@ def bar_plot(dftrial, region, xl_name):
 
     totals = dftrial.count(axis=1)  # number of non NaN values in each row (each year)
     totals = totals.loc[1820:]
-
+    
+    # transposing data frame, to have the years as columns
     dfTrial_trans = dftrial.loc[1820:].transpose()
     year_cols = dfTrial_trans.columns
 
@@ -35,7 +36,7 @@ def bar_plot(dftrial, region, xl_name):
     create new DF with this size OR add to df IF value is between so and so
     calculate percentages directly and transfer to new DF
     '''
-
+    # iterating over all years from 1820 onwards
     for col in year_cols:
         warming1 = 0
         warming2 = 0
@@ -50,7 +51,7 @@ def bar_plot(dftrial, region, xl_name):
         noTrend = 0
         current_total = dfTrial_trans[col].count().sum()
         current_year = dfTrial_trans[col].tolist()
-        for val in current_year:
+        for val in current_year:        # => looping over each value (of each location) in the column of current year
             if 0 < val <= 0.25:
                 warming1 = warming1 + 1
             if 0.25 < val <= 0.5:
@@ -124,7 +125,8 @@ def bar_plot(dftrial, region, xl_name):
     cooling3_vals = np.array(df_new['cooling3'].values.tolist())
     cooling4_vals = np.array(df_new['cooling4'].values.tolist())
     cooling5_vals = np.array(df_new['cooling5'].values.tolist())
-
+    
+    # stacked bar plot
     fig, ax1 = plt.subplots(figsize=(10, 9))
     N = len(warming1_vals)
     ind = np.arange(N)
