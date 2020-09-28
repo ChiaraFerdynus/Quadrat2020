@@ -3,6 +3,8 @@ import numpy as np
 from openpyxl import load_workbook
 import xlsxwriter
 
+'''This script creates a spreadsheet showing the number of valid entries in each year, for each parameter set'''
+
 BU_Q = ['merged_BU_30w_10md', 'merged_BU_30w_20md', 'merged_BU_30w_25md',
         'merged_BU_20w_10md', 'merged_BU_20w_20md', 'merged_BU_20w_25md',
         'merged_BU_50w_10md', 'merged_BU_50w_20md', 'merged_BU_50w_25md']
