@@ -5,23 +5,25 @@ import matplotlib.pyplot as plt
 from openpyxl import load_workbook
 import xlsxwriter
 
+'''
+This script only holds the function to plot the bar chart of trends, it is called in "SortCountry.py"
+'''
 
 def bar_plot(dftrial, region, xl_name):
-    # dftrial = pd.read_excel(xl_name+'.xlsx')
+    dftrial = pd.read_excel(xl_name+'.xlsx')
     dftrial = dftrial.replace(to_replace='Not enough data', value=np.nan, regex=True)
+    # cosl = names of columns
     cols = dftrial.columns
     # standard = dftrial[cols[1:]].describe()
 
+    # temporary data frame, storing the values of different trends over teh past 200 years (1820 onwards)
     df_new = pd.DataFrame(index=range(0, 200), columns=['warming1', 'warming2', 'warming3', 'warming4', 'warming5',
                                                         'noTrend', 'cooling1', 'cooling2', 'cooling3', 'cooling4', 'cooling5'])
-    # year = pd.Series(dftrial['Year'].loc[348:])
-    # year.reset_index(drop=True, inplace=True)
+
     year = pd.Series(range(1820, 2020))
     df_new.insert(0, 'Year', year)
-    # df_new.insert(0, 'Year_group', year)
     df_new = df_new.set_index('Year')
 
-    # dftrial = dftrial.set_index('Year')
     totals = dftrial.count(axis=1)  # number of non NaN values in each row (each year)
     totals = totals.loc[1820:]
 
