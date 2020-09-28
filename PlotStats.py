@@ -7,6 +7,7 @@ from openpyxl import load_workbook
 import xlsxwriter
 
 '''All this hard coded shit is so messy, my apologies'''
+''' This script creates teh 3x3 plot (along with others) of the number of sites per year'''
 
 BU = pd.read_excel('BU_stats.xlsx')
 FU = pd.read_excel('FU_stats.xlsx')
