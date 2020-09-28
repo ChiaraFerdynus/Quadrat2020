@@ -19,7 +19,8 @@ OW_Q = ['merged_OW_30w_10md', 'merged_OW_30w_20md', 'merged_OW_30w_25md',
         'merged_OW_20w_10md', 'merged_OW_20w_20md', 'merged_OW_20w_25md',
         'merged_OW_50w_10md', 'merged_OW_50w_20md', 'merged_OW_50w_25md']
 
-for sheet in OW_Q:             # --> iterate over FU, BU and OW seperately by simply cahnging "OW_Q" to respective other list
+#- careful! BU & OW vs FU, Plot2 has to be modified (since positive / negative values signify warming / cooling trend)
+for sheet in OW_Q:             # --> iterate over FU, BU and OW seperately by simply cahnging "OW_Q" to respective other list 
     name = sheet[-12:]
     df = pd.read_excel(sheet + '.xlsx')
     df = df.set_index('Year')
