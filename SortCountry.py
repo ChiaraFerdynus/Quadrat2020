@@ -6,7 +6,7 @@ from openpyxl import load_workbook
 import xlsxwriter
 import Plot2
 
-''' BU '''
+''' These lists contain the names of the excel sheets needed '''
 BU_Q = ['merged_BU_30w_10md', 'merged_BU_30w_20md', 'merged_BU_30w_25md',
         'merged_BU_20w_10md', 'merged_BU_20w_20md', 'merged_BU_20w_25md',
         'merged_BU_50w_10md', 'merged_BU_50w_20md', 'merged_BU_50w_25md']
@@ -19,7 +19,7 @@ OW_Q = ['merged_OW_30w_10md', 'merged_OW_30w_20md', 'merged_OW_30w_25md',
         'merged_OW_20w_10md', 'merged_OW_20w_20md', 'merged_OW_20w_25md',
         'merged_OW_50w_10md', 'merged_OW_50w_20md', 'merged_OW_50w_25md']
 
-for sheet in OW_Q:
+for sheet in OW_Q:             # --> iterate over FU, BU and OW seperately by simply cahnging "OW_Q" to respective other list
     name = sheet[-12:]
     df = pd.read_excel(sheet + '.xlsx')
     df = df.set_index('Year')
