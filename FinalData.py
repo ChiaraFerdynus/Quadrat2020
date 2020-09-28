@@ -144,7 +144,7 @@ def merge_frame_Z(data, window, threshold):
 
     return sample_list
 
-
+# --> these are all the parameter sets that have to be calculated for Fu, BU and OW (I did it manually step by step as it took quite long to run one set already)
 # 30 year window, 10% tolerance
 
 # 30 year window, 20% tolerance
